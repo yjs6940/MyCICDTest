@@ -19,21 +19,22 @@ jobs:
     steps:
       - name : Checkout code 
         uses: actions/checkout@v4
-
+      - name : echo command
+        run: echo hello action!
       # Runs a single command using the runners shell
-      - name: Install SSH Client
-        run: sudo apt install -y openssh-client
+      #- name: Install SSH Client
+      #  run: sudo apt install -y openssh-client
 
       # Runs a set of commands using the runners shell
-      - name: Add SSH Key
-        uses: webfactory/ssh-agent@v0.9.0
-        with: 
-          ssh-private-key: ${{secrets.OCI_SSH_KEY}}
-      - name: Deploy to OCI
-        run: |
-          ssh -o StrictHostKeyChecking=no ${{secrets.OCI_USER}}@${{secrets.OCI_PUBLIC_IP}} << 'EOF'
-            cd /home/ubuntu/MyCICDTest
-            git pull origin master
-            python3 hello.py
-          EOF
+      #- name: Add SSH Key
+      #  uses: webfactory/ssh-agent@v0.9.0
+      #  with: 
+      #    ssh-private-key: ${{secrets.OCI_SSH_KEY}}
+      #- name: Deploy to OCI
+      #  run: |
+      #    ssh -o StrictHostKeyChecking=no ${{secrets.OCI_USER}}@${{secrets.OCI_PUBLIC_IP}} << 'EOF'
+      #      cd /home/ubuntu/MyCICDTest
+      #      git pull origin master
+      #      python3 hello.py
+      #    EOF
           
